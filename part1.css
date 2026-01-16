@@ -1,0 +1,166 @@
+:root {
+    --primary-pink: #ffafbd;
+    --primary-peach: #ffc3a0;
+    --text-color: #5d4a4a;
+    --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-peach));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    color: var(--text-color);
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Gift Button Styles */
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+}
+
+#gift-button {
+    font-size: 100px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#gift-button:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Letter Card */
+.letter-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+#typing-text {
+    white-space: pre-wrap;
+    min-height: 150px;
+}
+
+/* Slideshow */
+#slideshow-section {
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/2;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide:hover {
+    box-shadow: inset 0 0 20px 10px rgba(255, 175, 189, 0.5);
+}
+
+.nav-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.nav-buttons button {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 10px;
+    pointer-events: auto;
+}
+
+.hint {
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: white;
+}
+
+/* Animations & Utilities */
+.hidden { display: none; }
+
+.floating-heart {
+    position: absolute;
+    font-size: 24px;
+    pointer-events: none;
+    animation: floatUp 2s forwards;
+    z-index: 100;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100px); opacity: 0; }
+}
+
+/* Balloon Animation */
+.balloon {
+    position: fixed;
+    bottom: -10%;
+    font-size: 30px;
+    animation: floatBalloon 15s linear infinite;
+    z-index: 1;
+}
+
+@keyframes floatBalloon {
+    0% { transform: translateY(0) rotate(0deg); left: var(--start-x); }
+    100% { transform: translateY(-120vh) rotate(20deg); left: var(--end-x); }
+}
